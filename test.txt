@@ -1,2 +1,0 @@
-hello git, 
-My name local git
