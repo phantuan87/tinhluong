@@ -1,0 +1,55 @@
+{
+	"default_actCal":"gross2net",
+	"exchange_rate":21000,
+	"minimum_wage":1150000,
+	"social_ins":8,
+	"health_ins":"1.5",
+	"unemployed_ins":1,
+	"reduct_personal":9000000,
+	"reduct_dependant":3600000,
+	"reduct_nbr_denp":0,
+	"perIncomeTaxTbl": {
+		"lv1": {
+			"from":0,
+			"to":5000000,
+			"per":5
+		},
+	
+		"lv2": {
+			"from":5000000,
+			"to":10000000,
+			"per":10
+		},
+		
+		"lv3": {
+			"from":10000000,
+			"to":18000000,
+			"per":15
+		},
+		
+		"lv4": {
+			"from":18000000,
+			"to":32000000,
+			"per":20
+		},
+		
+		"lv5": {
+			"from":32000000,
+			"to":52000000,
+			"per":25
+		},
+		
+		"lv6": {
+			"from":52000000,
+			"to":80000000,
+			"per":30
+		},
+		
+		"lv7": {
+			"from":80000000,
+			"to":"undefined",
+			"per":35
+		}
+	}
+
+}

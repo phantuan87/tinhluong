@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+	<title>Tính thuế thu nhập cá nhân, phí bảo hiểm, chuyển Gross sang NET, NET sang Gross</title>
+	
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="css/bootstrap.css">
+	
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="css/common.css">
+	
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="js/jquery-1.11.1.min.js"></script>
+	<script src="js/holder.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/script.js"></script>
+</head>
+<body id="home">
+	<div class="container">
+		<div class="header">
+			<ul class="nav nav-pills pull-right">
+				<li class="active"><a href="#">Home</a></li>
+				<li><a href="#">Information</a></li>
+				<li><a href="#">Contact</a></li>
+			</ul>
+			<h3 class="text-muted">Tính lương Gross & Net</h3>
+		</div>
+		
+		<div class="row content">
+			<div class="col-md-8">
+			
+				<div class="row form-horizontal" id="person_info">
+					<div class="col-md-12">
+						<div class="row show-grid">
+							<div class="btn-group" data-toggle="buttons">
+								<label id="gross2net_btn" class="btn btn-warning active">
+									<input type="radio" name="atn_cal" checked> GROSS -> NET
+								</label>
+								<label id="net2gross_btn" class="btn btn-warning">
+									<input type="radio" name="atn_cal" > NET -> GROSS
+								</label>
+							</div>
+						</div>
+						
+						<!-- Thu nhập -->
+						
+						<div class="row">
+							<div class="col-md-12">
+								<h4 id="receive_income_lbl">GROSS - Thu nhập trước thuế</h4>
+								<div id="receive_income_desc" class="show-grid">(Tính BHXH, BHYT, BHTN)</div>
+								
+								<div class="row show-grid">
+									<div class="col-md-1 control-label form_label">VND:</div>
+									<div class="col-md-3"><input id="receive_income_vnd" class="form-control money-field" placeholder="0" /></div>
+									
+									<div class="col-md-1 control-label form_label">USD:</div>
+									<div class="col-md-3"><input id="receive_income_usd" class="form-control money-field" placeholder="0" /></div>
+								</div>
+								
+							</div>
+						</div>
+						
+						<div class="row show-grid">
+							<div class="col-md-12">
+								<h4>Lương cơ bản</h4>
+								<div class="show-grid">(Tính thuế thu nhập cá nhân)</div>
+								
+								<div class="row show-grid">
+									<div class="col-md-1 control-label form_label">VND:</div>
+									<div class="col-md-3"><input id="bs_income_vnd" class="form-control money-field" placeholder="0" /></div>
+								</div>
+								
+								<div class="row">
+									<div class="col-md-1 control-label form_label">USD:</div>
+									<div class="col-md-3"><input id="bs_income_usd" class="form-control money-field" placeholder="0" /></div>
+									
+									<div class="col-md-4">
+										<div class="input-group">
+											<span class="input-group-addon">1 USD =</span>
+											<input id="ex_rate_usd" class="form-control money-field" placeholder="0"/>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<!-- Bảo hiểm -->
+						<div class="row show-grid">
+							<div class="col-md-12">
+								<h4>Bảo hiểm</h4>
+								
+								<div class="row show-grid">
+									<div class="col-md-3 control-label form_label">Lương tối thiểu: </div>
+									<div class="col-md-3">
+										<div class="input-group">
+											<input id="minimum_wage" class="form-control money-field" placeholder="0" />
+											<span class="input-group-addon">VND</span>
+										</div>
+									</div>
+								</div>
+								
+								<div class="row">
+									<div class="col-md-1 control-label form_label">BHXH: </div>
+									<div class="col-md-2">
+										<div class="input-group">
+											<input id="social_insurance" class="form-control percent-field" placeholder="0" />
+											<span class="input-group-addon">%</span>
+										</div>
+									</div>
+									
+									<div class="col-md-1 control-label form_label">BHYT: </div>
+									<div class="col-md-2">
+										<div class="input-group">
+											<input id="heath_insurance" class="form-control percent-field" placeholder="0" />
+											<span class="input-group-addon">%</span>
+										</div>
+									</div>
+									
+									<div class="col-md-1 control-label form_label">BHTN: </div>
+									<div class="col-md-2">
+										<div class="input-group">
+											<input id="unemployed_insurance" class="form-control percent-field" placeholder="0" />
+											<span class="input-group-addon">%</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<!-- Giảm trừ gia cảnh -->
+						<div class="row show-grid">
+							<div class="col-md-12">
+								<h4>Giảm trừ gia cảnh</h4>
+								
+								<div class="row show-grid">
+									<div class="col-md-3 control-label form_label">Cá nhân: </div>
+									<div class="col-md-3">
+										<div class="input-group">
+											<input id="reduct_personal" class="form-control money-field" placeholder="0" />
+											<span class="input-group-addon">VND</span>
+										</div>
+									</div>
+								</div>
+								
+								<div class="row">
+									<div class="col-md-3 control-label form_label">Người phụ thuộc: </div>
+									<div class="col-md-3">
+										<div class="input-group">
+											<input id="reduct_dependant" class="form-control money-field" placeholder="0" />
+											<span class="input-group-addon">VND</span>
+										</div>
+									</div>
+									
+									<div class="col-md-3 control-label form_label">Số người phụ thuộc: </div>
+									<div class="col-md-3">
+										<div class="input-group">
+											<input id="reduct_numbr_denpendat" class="form-control number-field" placeholder="0" />
+											<span class="input-group-addon">người</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="col-md-12 btn-control">
+								<button type="button" id="calculate" class="btn btn-success">GROSS -> NET</button>
+								<button type="button" class="btn btn-warning"><span class="glyphicon glyphicon-print"></span></button>
+							</div>
+						</div>
+					</div> <!-- end col -->
+				</div> <!-- end person_info row -->
+				
+				<hr/>
+				
+				<!-- Chi tiết thu nhập và chịu thuế -->
+				<div class="row show-grid">
+					<div class="col-md-12">
+						<h4>Chi tiết thu nhập và chịu thuế (VND)</h4>
+						
+						<!-- Summary Gross-Net -->
+						<div class="row">
+							<div class="col-md-7">
+								<table id="summary_gross_net" class="table table-bordered">
+									<tr>
+										<th id="sgn_col_1"></th>
+										<th id="sgn_col_2">VND</th>
+										<th id="sgn_col_3">USD</th>
+									</tr>
+									
+									<tr>
+										<th class="info">Gross</th>
+										<td id="gross_summary">0</td>
+										<td id="gross_summary_usd">0</td>
+									</tr>
+									<tr>
+										<th class="success">Net</th>
+										<td id="net_summary">0</td>
+										<td id="net_summary_usd">0</td>
+									</tr>
+								</table>
+							</div>
+						</div> <!-- end summary -->
+	
+						<table class="table table-bordered income-tbl-detail">
+							<tr class="info">
+								<th>Lương GROSS</th>
+								<td id="gross_dt">0</td>
+							</tr>
+							<tr>
+								<th>Bảo hiểm xã hội (8%)</th>
+								<td id="sin_dt">0</td>
+							</tr>
+							<tr>
+								<th>Bảo hiểm y tế (1.5%)</th>
+								<td id="hin_dt">0</td>
+							</tr>
+							<tr>
+								<th>Bảo hiểm thất nghiệp (1%)</th>
+								<td id="uin_dt">0</td>
+							</tr>
+							<tr class="active">
+								<th>Thu nhập trước thuế</th>
+								<td id="income_be4_tax_dt">0</td>
+							</tr>
+							<tr>
+								<th>Giảm trừ gia cảnh bản thân</th>
+								<td id="red_person_dt">0</td>
+							</tr>
+							<tr>
+								<th>Giảm trừ gia cảnh người phụ thuộc</th>
+								<td id="red_depen_dt">0</td>
+							</tr>
+							<tr class="active">
+								<th>Thu nhập chịu thuế</th>
+								<td id="tax_income_dt">0</td>
+							</tr>
+							<tr>
+								<th>Thuế thu nhập cá nhân (*)</th>
+								<td id="per_tax_income_dt">0</td>
+							</tr>
+							<tr class="success">
+								<th>
+									Lương NET <br>
+									<span>(Thu nhập trước thuế - Thuế thu nhập cá nhân)</span>
+								</th>
+								<td id="net_dt">0</td>
+							</tr>
+						</table>
+							
+					</div> <!-- end col -->
+				</div> <!-- End Chi tiết thu nhập và chịu thuế -->
+				
+				<!-- Chi tiết thuế thu nhập cá nhân (VND) -->
+				<div class="row show-grid">
+					<div class="col-md-12">
+						<h4>Chi tiết thuế thu nhập cá nhân (VND)</h4>
+						
+						<div class="row">
+							<div class="col-md-9">
+								<table class="table table-bordered detail-income-tbl">
+									<tr class="info">
+										<th>Mức chịu thuế</th>
+										<th>Thuế suất</th>
+										<th>Tiền nộp (VND)</th>
+									</tr>
+
+									<tr>
+										<td>Đến 5 triệu VND</td>
+										<td class="tax-rate-col">5%</td>
+										<td class="detail-payment-col" id="pit_5">0</td>
+									</tr>
+									<tr>
+										<td>Trên 5 triệu VND đến 10 triệu VND</td>
+										<td class="tax-rate-col">10%</td>
+										<td class="detail-payment-col" id="pit_10">0</td>
+									</tr>
+									<tr>
+										<td>Trên 10 triệu VND đến 18 triệu VND</td>
+										<td class="tax-rate-col">15%</td>
+										<td class="detail-payment-col" id="pit_15">0</td>
+									</tr>
+									<tr>
+										<td>Trên 18 triệu VND đến 32 triệu VND</td>
+										<td class="tax-rate-col">20%</td>
+										<td class="detail-payment-col" id="pit_20">0</td>
+									</tr>
+									<tr>
+										<td>Trên 32 triệu VND đến 52 triệu VND</td>
+										<td class="tax-rate-col">25%</td>
+										<td class="detail-payment-col" id="pit_25">0</td>
+									</tr>
+									<tr>
+										<td>Trên 52 triệu VND đến 80 triệu VND</td>
+										<td class="tax-rate-col">30%</td>
+										<td class="detail-payment-col" id="pit_30">0</td>
+									</tr>
+									<tr>
+										<td>Trên 80 triệu VND</td>
+										<td class="tax-rate-col">35%</td>
+										<td class="detail-payment-col" id="pit_35">0</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<!-- Người sử dụng lao động trả (VND) -->
+				<div class="row show-grid">
+					<div class="col-md-12">
+						<h4>Người sử dụng lao động trả (VND)</h4>
+						
+						<div class="row">
+							<div class="col-md-9">
+								<table class="table table-bordered emp-pay-tbl">
+									<tr>
+										<th>Lương GROSS</th>
+										<td id="gross_emper_pay">0</td>
+									</tr>
+									<tr>
+										<th>Bảo hiểm xã hội (18%)</th>
+										<td id="sin_emper_pay">0</td>
+									</tr>
+									<tr>
+										<th>Bảo hiểm y tế (3%)</th>
+										<td id="hin_emper_pay">0</td>
+									</tr>
+									<tr>
+										<th>Bảo hiểm thất nghiệp (1%)</th>
+										<td id="uin_emper_pay">0</td>
+									</tr>
+									<tr class="success">
+										<th>Tổng cộng</th>
+										<td id="total_emper_pay">0</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+			</div> <!-- end left col content -->
+			
+			<div class="col-md-3 col-md-offset-1" id="ads">
+				<div class="sidebar-module">
+					<a href="#" class="thumbnail">
+						<img src="holder.js/140x140">
+					</a>	
+				</div>
+			</div>
+		</div> <!-- end row content -->
+		
+		<div class="footer">
+			<p>© Company 2014</p>
+		</div>
+	</div>
+
+</body>
+</html>

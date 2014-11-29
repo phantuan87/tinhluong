@@ -1,0 +1,105 @@
+#home .header {
+	border-bottom: 1px solid #e5e5e5;
+}
+
+#home .header h3 {
+	margin-top: 0;
+	margin-bottom: 0;
+	line-height: 40px;
+}
+
+#home .content h4 {
+	font-weight: bold;	
+}
+
+#home .footer {
+	padding-top: 19px;
+	color: #777;
+	border-top: 1px solid #e5e5e5;
+}
+
+#home #ads {
+	margin-top: 10px; 
+}
+
+#home .show-grid {
+	margin-bottom: 15px;
+}
+
+#home .form_label {
+	text-align: left !important;
+}
+
+#home table .btn-col {
+	text-align: center;	
+	vertical-align: middle;
+}
+
+#home .btn-control {
+	text-align: right;	
+}
+
+#home .income-tbl-detail td {
+	text-align: right;
+	width: 181px;
+}
+
+#home .emp-pay-tbl td {
+	text-align: right;
+	width: 161px;
+}
+
+#home .detail-income-tbl .tax-rate-col,
+#home .detail-income-tbl .detail-payment-col {
+	text-align: right;
+}
+
+#home .detail-income-tbl .detail-payment-col {
+	width: 161px;
+}
+
+#home .income-tbl-detail th span {
+	font-weight: normal;	
+}
+
+#home #summary_gross_net #sgn_col_1 {
+	width: 100px;
+}
+
+#home #summary_gross_net #sgn_col_2 {
+	width: 150px;
+}
+
+@media screen and (min-width: 768px) {
+
+	#home {
+		padding-top: 20px;
+		padding-bottom: 20px;
+	}
+	
+	#home .header,
+	#home .content,
+	#home .footer {
+		padding-right: 0;
+		padding-left: 0;
+	}
+	
+	#home .header {
+		margin-bottom: 30px;
+	}
+	
+	#home .header h3 {
+		padding-bottom: 19px;
+	}
+	
+	#home .content {
+		margin: 0  0 40px 0;
+	}
+	
+}
+
+@media (min-width: 992px) {
+	#home #ads {
+		margin-top: 0px; 
+	}
+}

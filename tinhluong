@@ -1,0 +1,22 @@
+[indentation]
+indent_width=4
+indent_type=1
+indent_hard_tab_width=8
+detect_indent=false
+detect_indent_width=false
+indent_mode=2
+
+[project]
+name=TinhLuong
+base_path=/home/phantuan/Dropbox/Projects Document/TinhLuong
+description=
+
+[long line marker]
+long_line_behaviour=1
+long_line_column=72
+
+[files]
+current_page=0
+FILE_NAME_0=166;Javascript;0;16;1;1;0;/home/phantuan/Dropbox/Projects Document/TinhLuong/js/script.js;0;4
+FILE_NAME_1=6542;HTML;0;16;1;1;0;/home/phantuan/Dropbox/Projects Document/TinhLuong/index.html;0;4
+FILE_NAME_2=164;None;0;16;1;1;0;/home/phantuan/Dropbox/Projects Document/TinhLuong/data/config.json;0;4
